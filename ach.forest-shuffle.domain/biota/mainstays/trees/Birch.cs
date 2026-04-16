@@ -1,0 +1,13 @@
+﻿using forest;
+
+namespace biota.mainstays.trees;
+
+public class Birch() : Tree(TreeIcon.Birch)
+{
+    public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
+
+    public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
+    {
+        return 1;
+    }
+}
