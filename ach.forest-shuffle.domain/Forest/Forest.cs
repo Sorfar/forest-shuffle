@@ -1,8 +1,8 @@
 ﻿namespace ach.forest_shuffle.domain.Forest;
 
-internal class ForestAggregate
+internal class Forest
 {
-    private ForestAggregate()
+    private Forest()
     {
     }
 
@@ -14,12 +14,12 @@ internal class ForestAggregate
 
     public IReadOnlyList<Plot> Plots => _plots;
 
-    public static ForestAggregate Create()
+    public static Forest Create()
     {
-        return new ForestAggregate();
+        return new Forest();
     }
 
-    public double GetTotalPoints(IReadOnlyList<ForestAggregate> otherForests)
+    public double GetTotalPoints(IReadOnlyList<Forest> otherForests)
     {
         var totalPoints = 0d;
 
@@ -182,7 +182,7 @@ internal abstract class Dweller(TreeIcon treeIcon) : Biota(treeIcon)
 
 internal abstract class Butterfly(TreeIcon treeIcon) : Dweller(treeIcon)
 {
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -190,7 +190,7 @@ internal abstract class Butterfly(TreeIcon treeIcon) : Dweller(treeIcon)
 
 internal abstract class Hare(TreeIcon treeIcon) : Dweller(treeIcon)
 {
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.Biota.Count(b => b.GetType() == typeof(Hare));
     }
@@ -198,7 +198,7 @@ internal abstract class Hare(TreeIcon treeIcon) : Dweller(treeIcon)
 
 internal abstract class Bat(TreeIcon treeIcon) : Dweller(treeIcon)
 {
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.DistinctNumberOf(TypeIcon.Bat) >= 3 ? 5 : 0;
     }
@@ -210,7 +210,7 @@ internal abstract class Biota(TreeIcon treeIcon)
 
     public abstract List<TypeIcon> TypeIcons { get; }
 
-    public abstract double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot);
+    public abstract double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot);
 
     public bool HasType(TypeIcon typeIcon)
     {
@@ -269,7 +269,7 @@ internal class AlpineMarmot(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3 * forest.DistinctNumberOf(TypeIcon.Plant);
     }
@@ -279,7 +279,7 @@ internal class AlpineNewt(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Amphibian, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2 * forest.NumberOf(TypeIcon.Insect);
     }
@@ -294,7 +294,7 @@ internal class BarnOwl(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3 * forest.NumberOf(TypeIcon.Bat);
     }
@@ -304,7 +304,7 @@ internal class BeardedVulture(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.Cave;
     }
@@ -314,7 +314,7 @@ internal class BeeSwarm(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Insect, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.Plant);
     }
@@ -329,7 +329,7 @@ internal class Beech() : Tree(TreeIcon.Beech)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         var numberOfBeeches = forest.NumberOfTree(this);
 
@@ -341,7 +341,7 @@ internal class BeechMarten(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 5 * forest.Plots.Count(p => p.FullyOccupied);
     }
@@ -351,7 +351,7 @@ internal class Birch() : Tree(TreeIcon.Birch)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 1;
     }
@@ -361,7 +361,7 @@ internal class BlackTrumpet(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Mushroom, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -371,7 +371,7 @@ internal class Blackthorn : Shrub
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Shrub, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -381,7 +381,7 @@ internal class Blackberries(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Plant];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2 * forest.NumberOf(TypeIcon.Plant);
     }
@@ -391,7 +391,7 @@ internal class BlueBerry(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Plant, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2 * forest.DistinctNumberOf(TypeIcon.Bird);
     }
@@ -401,7 +401,7 @@ internal class BrownBear(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -416,7 +416,7 @@ internal class Bullfinch(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2 * forest.NumberOf(TypeIcon.Insect);
     }
@@ -431,7 +431,7 @@ internal class Capercaillie(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.Plant);
     }
@@ -441,7 +441,7 @@ internal class Chaffinch(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return plot.Mainstay is Beech ? 5 : 0;
     }
@@ -451,7 +451,7 @@ internal class Chamois(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.ClovenHoofedAnimal, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3 * forest.NumberOf(TreeIcon);
     }
@@ -462,7 +462,7 @@ internal class Chanterelle(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Mushroom];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -472,7 +472,7 @@ internal class CommonHazel : Shrub
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Shrub, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -487,7 +487,7 @@ internal class CommonRaven(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 5;
     }
@@ -498,7 +498,7 @@ internal class CommonToad(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Amphibian];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return plot.BottomDwellers.Count(d => d.GetType() == typeof(CommonToad)) == 2 ? 5 : 0;
     }
@@ -509,7 +509,7 @@ internal class CraneFly(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Insect, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.Bat);
     }
@@ -519,7 +519,7 @@ internal class Digitalis(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Plant, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.DistinctNumberOf(TypeIcon.Plant) switch
         {
@@ -537,7 +537,7 @@ internal class DouglasFir(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 5;
     }
@@ -547,7 +547,7 @@ internal class Edelweiss(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Plant, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3;
     }
@@ -557,7 +557,7 @@ internal class Elderberry : Shrub
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Shrub, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -567,7 +567,7 @@ internal class EurasianJay(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3;
     }
@@ -577,7 +577,7 @@ internal class EuropeanBadger(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2;
     }
@@ -587,7 +587,7 @@ internal class EuropeanBison(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.ClovenHoofedAnimal, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2 * forest.NumberOf(TreeIcon.Beech) + 2 * forest.NumberOf(TreeIcon.Oak);
     }
@@ -597,7 +597,7 @@ internal class EuropeanFatDormouse(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
     
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return plot.Biota.Any(b => b.HasType(TypeIcon.Bat)) ? 15 : 0;
     }
@@ -612,7 +612,7 @@ internal class EuropeanLarch() : Tree(TreeIcon.EuropeanLarch)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3;
     }
@@ -622,7 +622,7 @@ internal class EurasianMagpie(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3;
     }
@@ -632,7 +632,7 @@ internal class EuropeanPolecat(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return plot.Dwellers.Count == 1 ? 10 : 0;
     }
@@ -642,7 +642,7 @@ internal class EuropeanWildcat(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.WoodlandEdge);
     }
@@ -652,7 +652,7 @@ internal class FallowDeer(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Deer, TypeIcon.ClovenHoofedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3 * forest.NumberOf(TypeIcon.ClovenHoofedAnimal);
     }
@@ -662,7 +662,7 @@ internal class Fireflies(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Insect];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         var fireFliesCount = forest.Biota.Count(b => b is Fireflies);
         return fireFliesCount switch
@@ -678,7 +678,7 @@ internal class FireSalamander(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Amphibian];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -688,7 +688,7 @@ internal class FlyAgaric(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Mushroom];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -698,7 +698,7 @@ internal class Gentian(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Plant, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3 * forest.NumberOf(TypeIcon.Butterfly);
     }
@@ -708,7 +708,7 @@ internal class Gnat(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Insect];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.Bat);
     }
@@ -718,7 +718,7 @@ internal class GoldenEagle(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.PawedAnimal) + forest.NumberOf(TypeIcon.Amphibian);
     }
@@ -728,7 +728,7 @@ internal class Goshawk(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3 * forest.NumberOf(TypeIcon.Bird);
     }
@@ -738,7 +738,7 @@ internal class GreatGreenBushCricket(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Insect, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.Insect);
     }
@@ -753,7 +753,7 @@ internal class GreatSpottedWoodpecker(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return otherForests.All(of => of.NumberOfTree() < forest.NumberOfTree()) ? 10 : 0;
     }
@@ -763,7 +763,7 @@ internal class Hedgehog(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2 * forest.NumberOf(TypeIcon.Butterfly);
     }
@@ -773,7 +773,7 @@ internal class HorseChestnut() : Tree(TreeIcon.HorseChestnut)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         var count = forest.NumberOfTree(this);
         return count >= 7 ? 7 : count;
@@ -784,7 +784,7 @@ internal class LargeTortoiseshell(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Insect, TypeIcon.Butterfly];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -794,7 +794,7 @@ internal class Linden() : Tree(TreeIcon.Linden)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return otherForests.All(of => of.NumberOfTree(this) < forest.NumberOfTree(this)) ? 3 : 1;
     }
@@ -804,7 +804,7 @@ internal class Lynx(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.Biota.Any(b => b is RoeDeer) ? 10 : 0;
     }
@@ -814,7 +814,7 @@ internal class MapButterfly(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Butterfly, TypeIcon.Insect, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -824,7 +824,7 @@ internal class Mole(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -834,7 +834,7 @@ internal class Moss(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Plant];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOfTree() >= 10 ? 10 : 0;
     }
@@ -849,7 +849,7 @@ internal class Nightingale(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return plot.Mainstay is Shrub ? 5 : 0;
     }
@@ -859,7 +859,7 @@ internal class Oak() : Tree(TreeIcon.Oak)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.DistinctNumberOfTrees() >= 8 ? 10 : 0;
     }
@@ -869,7 +869,7 @@ internal class ParasolMushroom(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Mushroom];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -884,7 +884,7 @@ internal class PennyBun(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Mushroom];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -899,7 +899,7 @@ internal class PondTurtle(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Amphibian];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 5;
     }
@@ -914,7 +914,7 @@ internal class Raccoon(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -924,7 +924,7 @@ internal class RedDeer(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.ClovenHoofedAnimal, TypeIcon.Deer];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.Tree) + forest.NumberOf(TypeIcon.Plant);
     }
@@ -934,7 +934,7 @@ internal class RedFox(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2 * forest.Biota.Count(b => b is Hare);
     }
@@ -944,7 +944,7 @@ internal class RedSquirrel(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return plot.Mainstay is Oak ? 5 : 0;
     }
@@ -954,7 +954,7 @@ internal class RoeDeer(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Deer, TypeIcon.ClovenHoofedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 3 * forest.NumberOf(TreeIcon);
     }
@@ -969,7 +969,7 @@ internal class SilverFir() : Tree(TreeIcon.SilverFir)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2 * plot.Dwellers.Count;
     }
@@ -985,7 +985,7 @@ internal class Squeaker(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.ClovenHoofedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 1;
     }
@@ -995,7 +995,7 @@ internal class StagBeetle(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Insect];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.PawedAnimal);
     }
@@ -1005,7 +1005,7 @@ internal class Steinbock(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.ClovenHoofedAnimal, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 10;
     }
@@ -1015,7 +1015,7 @@ internal class StingingNettle(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Plant, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2 * forest.NumberOf(TypeIcon.Butterfly);
     }
@@ -1025,7 +1025,7 @@ internal class StonePine() : Tree(TreeIcon.StonePine)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree, TypeIcon.Alpine];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.Alpine);
     }
@@ -1035,7 +1035,7 @@ internal class Sycamore() : Tree(TreeIcon.Sycamore)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.NumberOf(TypeIcon.Tree);
     }
@@ -1045,7 +1045,7 @@ internal class TawnyOwl(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Bird];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 5;
     }
@@ -1055,7 +1055,7 @@ internal class TreeFerns(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Plant];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 6 * forest.NumberOf(TypeIcon.Amphibian);
     }
@@ -1065,7 +1065,7 @@ internal class TreeFrog(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Amphibian];
  
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 5 * forest.Biota.Count(b => b is Gnat);
     }
@@ -1075,7 +1075,7 @@ internal class VioletCarpenterBee(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Insect];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -1085,7 +1085,7 @@ internal class WaterVole(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
@@ -1095,7 +1095,7 @@ internal class WildBoar(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.ClovenHoofedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.Biota.Any(b => b is Squeaker) ? 10 : 0;
     }
@@ -1105,7 +1105,7 @@ internal class FemaleWildBoar(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.ClovenHoofedAnimal, TypeIcon.WoodlandEdge];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 10 * forest.Biota.Count(b => b is Squeaker);
     }
@@ -1115,7 +1115,7 @@ internal class WildStrawberries(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Plant];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return forest.DistinctNumberOfTrees() >= 8 ? 10 : 0;
     }
@@ -1125,7 +1125,7 @@ internal class Wolf(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.PawedAnimal];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 5 * forest.NumberOf(TypeIcon.Deer);
     }
@@ -1135,7 +1135,7 @@ internal class WoodAnt(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Insect];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 2 * forest.Plots.Sum(p => p.BottomDwellers.Count);
     }
@@ -1145,7 +1145,7 @@ internal class Sapling() : Tree(TreeIcon.None)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
-    public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
+    public override double GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
         return 0;
     }
