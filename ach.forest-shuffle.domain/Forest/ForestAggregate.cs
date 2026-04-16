@@ -19,6 +19,56 @@ internal class ForestAggregate
         return new ForestAggregate();
     }
 
+    public double GetTotalPoints(IReadOnlyList<ForestAggregate> otherForests)
+    {
+        var totalPoints = 0d;
+
+        totalPoints += Plots.Sum(p => p.Biota.Sum(b => b.GetPointValue(this, otherForests, p)));
+
+        totalPoints += GetButterflyPoints();
+
+        totalPoints += GetFireSalamanderPoints();
+
+        return totalPoints;
+    }
+
+    public double GetButterflyPoints()
+    {
+        var butterflies = Biota.OfType<Butterfly>();
+
+        var sets = SplitIntoUniqueSets([.. butterflies]);
+
+        return sets.Sum(GetPointValue);
+
+        static double GetPointValue(List<Butterfly> butterflies)
+        {
+            return butterflies.Count switch
+            {
+                2 => 3,
+                3 => 6,
+                4 => 12,
+                5 => 20,
+                6 => 35,
+                7 => 55,
+                >= 8 => 80,
+                _ => 0,
+            };
+        }
+    }
+
+    public double GetFireSalamanderPoints()
+    {
+        var fireSalamanders = Biota.OfType<FireSalamander>();
+
+        return fireSalamanders.Count() switch
+        {
+            1 => 5,
+            2 => 15,
+            >= 3 => 25,
+            _ => 0
+        };
+    }
+
     public int NumberOf(TypeIcon typeIcon)
     {
         return Biota.Count(b => b.HasType(typeIcon));
@@ -58,13 +108,43 @@ internal class ForestAggregate
     {
         return Plots.Where(p => p.Mainstay.GetType() == tree.GetType()).Sum(p => p.Biota.Count(b => b is VioletCarpenterBee));
     }
+
+    private static List<List<T>> SplitIntoUniqueSets<T>(List<T> items) where T : Biota
+    {
+        var result = new List<List<T>>();
+
+        var groups = items
+            .GroupBy(b => b!.GetType())
+            .ToDictionary(
+                g => g.Key,
+                g => new Queue<T>(g)
+            );
+
+        while (groups.Any(g => g.Value.Count > 0))
+        {
+            var currentSet = new List<T>();
+
+            foreach (var key in groups.Keys.ToList())
+            {
+                var queue = groups[key];
+
+                if (queue.Count > 0)
+                {
+                    currentSet.Add(queue.Dequeue());
+                }
+            }
+
+            result.Add(currentSet);
+        }
+
+        return result;
+    }
 }
 
 internal class Plot
 {
     private Plot()
     {
-
     }
 
     public Mainstay Mainstay { get; private set; }
@@ -104,17 +184,7 @@ internal abstract class Butterfly(TreeIcon treeIcon) : Dweller(treeIcon)
 {
     public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
     {
-        return forest.DistinctNumberOf(TypeIcon.Butterfly) switch
-        {
-            2 => 1.5,
-            3 => 2,
-            4 => 3,
-            5 => 4,
-            6 => 5.833,
-            7 => 7.857,
-            >= 8 => 10,
-            _ => 0,
-        };
+        return 0;
     }
 }
 
@@ -454,10 +524,10 @@ internal class Digitalis(TreeIcon treeIcon) : Dweller(treeIcon)
         return forest.DistinctNumberOf(TypeIcon.Plant) switch
         {
             1 => 1,
-            2 => 1.5,
-            3 => 2,
-            4 => 2.5,
-            >= 5 => 3,
+            2 => 3,
+            3 => 6,
+            4 => 10,
+            >= 5 => 15,
             _ => 0,
         };
     }
@@ -595,7 +665,12 @@ internal class Fireflies(TreeIcon treeIcon) : Dweller(treeIcon)
     public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
     {
         var fireFliesCount = forest.Biota.Count(b => b is Fireflies);
-        return fireFliesCount >= 1 ? fireFliesCount * 5 : 0;
+        return fireFliesCount switch
+        {
+            > 0 and <= 4 => fireFliesCount * 5,
+            >= 5 => 20,
+            _ => 0,
+        };
     }
 }
 
@@ -605,13 +680,7 @@ internal class FireSalamander(TreeIcon treeIcon) : Dweller(treeIcon)
 
     public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
     {
-        return forest.Biota.Count(b => b is FireSalamander) switch
-        {
-            1 => 5,
-            2 => 7.5,
-            >= 3 => 8.334,
-            _ => 0
-        };
+        return 0;
     }
 }
 
@@ -707,7 +776,7 @@ internal class HorseChestnut() : Tree(TreeIcon.HorseChestnut)
     public override double GetPointValue(ForestAggregate forest, IReadOnlyList<ForestAggregate> otherForests, Plot plot)
     {
         var count = forest.NumberOfTree(this);
-        return count >= 8 ? 7 : count;
+        return count >= 7 ? 7 : count;
     }
 }
 
