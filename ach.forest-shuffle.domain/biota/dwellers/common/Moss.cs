@@ -8,6 +8,6 @@ public class Moss(TreeIcon treeIcon) : Dweller(treeIcon)
 
     public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
-        return forest.NumberOfTree() >= 10 ? 10 : 0;
+        return forest.NumberOfTrees() >= 10 ? 10 : 0;
     }
 }

@@ -1,5 +1,5 @@
 ﻿namespace biota.dwellers;
 
-public abstract class Dweller(TreeIcon treeIcon) : Biota(treeIcon)
+public abstract class Dweller(TreeIcon treeIcon) : LivingOrganism(treeIcon)
 {
 }

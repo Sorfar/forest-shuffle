@@ -1,8 +1,8 @@
 ﻿using forest;
 
-namespace biota.mainstays.shrubs;
+namespace biota.habitats.shrubs;
 
-public class CommonHazel(TreeIcon treeIcon) : Shrub(treeIcon)
+public class Elderberry(TreeIcon treeIcon) : Shrub(treeIcon)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Shrub, TypeIcon.WoodlandEdge];
 

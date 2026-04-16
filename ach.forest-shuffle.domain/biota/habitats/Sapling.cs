@@ -1,13 +1,14 @@
-﻿using forest;
+﻿using biota.habitats.trees;
+using forest;
 
-namespace biota.mainstays.trees;
+namespace biota.habitats;
 
-public class Birch() : Tree(TreeIcon.Birch)
+public class Sapling() : Tree(TreeIcon.None)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
     public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
-        return 1;
+        return 0;
     }
 }

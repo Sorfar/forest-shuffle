@@ -2,8 +2,8 @@
 using biota.dwellers;
 using biota.dwellers.butterflies;
 using biota.dwellers.common;
-using biota.mainstays;
-using biota.mainstays.trees;
+using biota.habitats;
+using biota.habitats.trees;
 
 namespace forest;
 
@@ -17,11 +17,11 @@ public class Forest
 
     public int CaveCardCount { get; private set; }
 
-    public IReadOnlyList<Biota> Biota => _plots.SelectMany(p => p.Biota).ToList();
+    public IReadOnlyList<LivingOrganism> Biota => _plots.SelectMany(p => p.Biota).ToList();
 
     public IReadOnlyList<Plot> Plots => _plots;
 
-    public Plot AddPlot(Mainstay mainstay)
+    public Plot AddPlot(Habitat mainstay)
     {
         var plot = new Plot(mainstay);
 
@@ -74,27 +74,27 @@ public class Forest
         return Biota.Where(b => b.HasType(TypeIcon.Tree) && b.TreeIcon is not TreeIcon.None).Select(b => b.GetType()).Distinct().Count();
     }
 
-    internal int NumberOfTree()
+    internal int NumberOfTrees()
     {
-        return Biota.Count(b => b is Tree) + NumberOfCarpenterBees();
+        return Biota.Count(b => b is Tree) + NumberOfVioletCarpenterBees();
     }
 
-    internal int NumberOfTree(Tree tree)
+    internal int NumberOfTreesOfType<T>() where T : Tree
     {
-        return Biota.Count(b => b.GetType() == tree.GetType()) + NumberOfCarpenterBees(tree);
+        return Biota.OfType<T>().Count() + NumberOfVioletCarpenterBees<T>();
     }
 
-    internal int NumberOfCarpenterBees()
+    internal int NumberOfVioletCarpenterBees()
     {
         return Plots.Where(p => p.Mainstay is Tree).Sum(p => p.Biota.Count(b => b is VioletCarpenterBee));
     }
 
-    internal int NumberOfCarpenterBees(Tree tree)
+    internal int NumberOfVioletCarpenterBees<T>() where T : Tree
     {
-        return Plots.Where(p => p.Mainstay.GetType() == tree.GetType()).Sum(p => p.Biota.Count(b => b is VioletCarpenterBee));
+        return Plots.Where(p => p.Mainstay.GetType() == typeof(T)).Sum(p => p.Biota.Count(b => b is VioletCarpenterBee));
     }
 
-    private static List<List<T>> SplitIntoUniqueSets<T>(List<T> items) where T : Biota
+    private static List<List<T>> SplitIntoUniqueSets<T>(List<T> items) where T : LivingOrganism
     {
         var result = new List<List<T>>();
 

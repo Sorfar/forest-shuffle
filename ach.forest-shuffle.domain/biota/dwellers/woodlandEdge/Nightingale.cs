@@ -1,4 +1,4 @@
-﻿using biota.mainstays.shrubs;
+﻿using biota.habitats.shrubs;
 using forest;
 
 namespace biota.dwellers.woodlandEdge;

@@ -1,4 +1,4 @@
-﻿using biota.mainstays.trees;
+﻿using biota.habitats.trees;
 using forest;
 
 namespace biota.dwellers.common;

@@ -1,4 +1,4 @@
-﻿using biota.mainstays.trees;
+﻿using biota.habitats.trees;
 
 namespace biota;
 

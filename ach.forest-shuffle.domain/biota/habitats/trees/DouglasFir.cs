@@ -1,13 +1,13 @@
 ﻿using forest;
 
-namespace biota.mainstays.trees;
+namespace biota.habitats.trees;
 
-public class Sycamore() : Tree(TreeIcon.Sycamore)
+public class DouglasFir() : Tree(TreeIcon.DouglasFir)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
     public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
-        return forest.NumberOf(TypeIcon.Tree);
+        return 5;
     }
 }

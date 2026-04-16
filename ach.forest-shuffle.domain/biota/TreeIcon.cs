@@ -2,6 +2,7 @@
 
 public enum TreeIcon
 {
+    None,
     Sycamore,
     Birch,
     Beech,

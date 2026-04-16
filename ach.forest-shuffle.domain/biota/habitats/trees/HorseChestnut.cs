@@ -1,13 +1,14 @@
 ﻿using forest;
 
-namespace biota.dwellers.common;
+namespace biota.habitats.trees;
 
-public class DouglasFir(TreeIcon treeIcon) : Dweller(treeIcon)
+public class HorseChestnut() : Tree(TreeIcon.HorseChestnut)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
     public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
-        return 5;
+        var count = forest.NumberOfTreesOfType<HorseChestnut>();
+        return count >= 7 ? 7 : count;
     }
 }

@@ -1,13 +1,13 @@
 ﻿using forest;
 
-namespace biota.mainstays.trees;
+namespace biota.habitats.trees;
 
-public class Sapling() : Tree(TreeIcon.None)
+public class SilverFir() : Tree(TreeIcon.SilverFir)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
     public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
-        return 0;
+        return 2 * plot.Dwellers.Count;
     }
 }

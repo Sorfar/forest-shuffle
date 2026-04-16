@@ -1,13 +1,13 @@
 ﻿using forest;
 
-namespace biota.mainstays.trees;
+namespace biota.habitats.trees;
 
-public class Oak() : Tree(TreeIcon.Oak)
+public class Linden() : Tree(TreeIcon.Linden)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
     public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
-        return forest.DistinctNumberOfTrees() >= 8 ? 10 : 0;
+        return otherForests.All(of => of.NumberOfTreesOfType<Linden>() < forest.NumberOfTreesOfType<Linden>()) ? 3 : 1;
     }
 }

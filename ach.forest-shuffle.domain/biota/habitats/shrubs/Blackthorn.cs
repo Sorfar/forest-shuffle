@@ -1,6 +1,6 @@
 ﻿using forest;
 
-namespace biota.mainstays.shrubs;
+namespace biota.habitats.shrubs;
 
 public class Blackthorn(TreeIcon treeIcon) : Shrub(treeIcon)
 {

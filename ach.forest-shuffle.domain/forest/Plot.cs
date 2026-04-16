@@ -1,18 +1,18 @@
 ﻿using biota;
 using biota.dwellers;
 using biota.dwellers.butterflies;
-using biota.mainstays;
+using biota.habitats;
 
 namespace forest;
 
 public class Plot
 {
-    public Plot(Mainstay mainstay)
+    public Plot(Habitat mainstay)
     {
         Mainstay = mainstay;
     }
 
-    public Mainstay Mainstay { get; private set; } = default!;
+    public Habitat Mainstay { get; private set; } = default!;
 
     public List<Dweller> TopDwellers { get; } = [];
 
@@ -22,9 +22,9 @@ public class Plot
 
     public List<Dweller> RightDwellers { get; } = [];
 
-    public IReadOnlyList<Biota> Biota => [Mainstay, .. TopDwellers, .. BottomDwellers, .. LeftDwellers, .. RightDwellers];
+    public IReadOnlyList<LivingOrganism> Biota => [Mainstay, .. TopDwellers, .. BottomDwellers, .. LeftDwellers, .. RightDwellers];
 
-    public IReadOnlyList<Biota> Dwellers => [.. TopDwellers, .. BottomDwellers, .. LeftDwellers, .. RightDwellers];
+    public IReadOnlyList<LivingOrganism> Dwellers => [.. TopDwellers, .. BottomDwellers, .. LeftDwellers, .. RightDwellers];
 
     public bool FullyOccupied => Biota.All(b => b != null);
 

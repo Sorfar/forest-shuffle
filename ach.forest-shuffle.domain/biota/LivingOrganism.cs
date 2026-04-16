@@ -2,7 +2,7 @@
 
 namespace biota;
 
-public abstract class Biota(TreeIcon treeIcon)
+public abstract class LivingOrganism(TreeIcon treeIcon)
 {
     public TreeIcon TreeIcon { get; } = treeIcon;
 

@@ -8,6 +8,6 @@ public class GreatSpottedWoodpecker(TreeIcon treeIcon) : Dweller(treeIcon)
 
     public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
-        return otherForests.All(of => of.NumberOfTree() < forest.NumberOfTree()) ? 10 : 0;
+        return otherForests.All(of => of.NumberOfTrees() < forest.NumberOfTrees()) ? 10 : 0;
     }
 }

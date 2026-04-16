@@ -1,15 +1,13 @@
 ﻿using forest;
 
-namespace biota.mainstays.trees;
+namespace biota.habitats.trees;
 
-public class Beech() : Tree(TreeIcon.Beech)
+public class Sycamore() : Tree(TreeIcon.Sycamore)
 {
     public override List<TypeIcon> TypeIcons => [TypeIcon.Tree];
 
     public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
-        var numberOfBeeches = forest.NumberOfTree(this);
-
-        return forest.NumberOfTree(this) >= 4 ? 5 : 0;
+        return forest.NumberOf(TypeIcon.Tree);
     }
 }
