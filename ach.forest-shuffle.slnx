@@ -1,5 +1,4 @@
 <Solution>
   <Project Path="ach.forest-shuffle.domain.tests.bdd/ach.forest-shuffle.domain.tests.bdd.csproj" Id="c72480ad-1523-476f-8173-176fabdf3270" />
-  <Project Path="ach.forest-shuffle.domain.tests/ach.forest-shuffle.domain.tests.csproj" Id="a7549e56-4411-4f29-9bf3-cff382396d0e" />
   <Project Path="ach.forest-shuffle.domain/ach.forest-shuffle.domain.csproj" />
 </Solution>
