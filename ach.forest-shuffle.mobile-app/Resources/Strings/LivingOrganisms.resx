@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlpineMarmot" xml:space="preserve">
+    <value>Alpine Marmot</value>
+  </data>
+  <data name="AlpineNewt" xml:space="preserve">
+    <value>Alpine Newt</value>
+  </data>
+  <data name="BarbastelleBat" xml:space="preserve">
+    <value>Barbastelle Bat</value>
+  </data>
+  <data name="BarnOwl" xml:space="preserve">
+    <value>Barn Owl</value>
+  </data>
+  <data name="BeardedVulpture" xml:space="preserve">
+    <value>Bearded Vulpture</value>
+  </data>
+  <data name="BechsteinsBat" xml:space="preserve">
+    <value>Bechstein's Bat</value>
+  </data>
+  <data name="Beech" xml:space="preserve">
+    <value>Beech</value>
+  </data>
+  <data name="BeechMarten" xml:space="preserve">
+    <value>Beech Marten</value>
+  </data>
+  <data name="BeeSwarm" xml:space="preserve">
+    <value>Bee Swarm</value>
+  </data>
+  <data name="Birch" xml:space="preserve">
+    <value>Birch</value>
+  </data>
+  <data name="Blackberries" xml:space="preserve">
+    <value>Blackberries</value>
+  </data>
+  <data name="Blackthorn" xml:space="preserve">
+    <value>Blackthorn</value>
+  </data>
+  <data name="BlackTrumpet" xml:space="preserve">
+    <value>Black Trumpet</value>
+  </data>
+  <data name="Blueberry" xml:space="preserve">
+    <value>Blueberry</value>
+  </data>
+  <data name="BrownBear" xml:space="preserve">
+    <value>Brown Bear</value>
+  </data>
+  <data name="BrownLongEaredBat" xml:space="preserve">
+    <value>Brown Long-Eared Bat</value>
+  </data>
+  <data name="Bullfinch" xml:space="preserve">
+    <value>Bullfinch</value>
+  </data>
+  <data name="Oak" xml:space="preserve">
+    <value>Oak</value>
+  </data>
+  <data name="CamberwellBeauty" xml:space="preserve">
+    <value>Camberwell Beauty</value>
+  </data>
+  <data name="Capercaillie" xml:space="preserve">
+    <value>Capercaillie</value>
+  </data>
+  <data name="Chaffinch" xml:space="preserve">
+    <value>Chaffinch</value>
+  </data>
+  <data name="Chamois" xml:space="preserve">
+    <value>Chamois</value>
+  </data>
+  <data name="Chanterelle" xml:space="preserve">
+    <value>Chanterelle</value>
+  </data>
+  <data name="CommonHazel" xml:space="preserve">
+    <value>Common Hazel</value>
+  </data>
+  <data name="CommonPipistrelle" xml:space="preserve">
+    <value>Common Pipistrelle</value>
+  </data>
+  <data name="CommonToad" xml:space="preserve">
+    <value>Common Toad</value>
+  </data>
+  <data name="CraneFly" xml:space="preserve">
+    <value>Crane Fly</value>
+  </data>
+  <data name="Digitalis" xml:space="preserve">
+    <value>Digitalis</value>
+  </data>
+  <data name="DouglasFir" xml:space="preserve">
+    <value>Douglas Fir</value>
+  </data>
+  <data name="Edelweiss" xml:space="preserve">
+    <value>Edelweiss</value>
+  </data>
+  <data name="Elderberry" xml:space="preserve">
+    <value>Elderberry</value>
+  </data>
+  <data name="EurasianJay" xml:space="preserve">
+    <value>Eurasian Jay</value>
+  </data>
+  <data name="EurasianMagpie" xml:space="preserve">
+    <value>Eurasian Magpie</value>
+  </data>
+  <data name="EuropeanBadger" xml:space="preserve">
+    <value>European Badger</value>
+  </data>
+  <data name="EuropeanBison" xml:space="preserve">
+    <value>European Bison</value>
+  </data>
+  <data name="EuropeanFatDormouse" xml:space="preserve">
+    <value>European Fat Dormouse</value>
+  </data>
+  <data name="EuropeanHare" xml:space="preserve">
+    <value>European Hare</value>
+  </data>
+  <data name="EuropeanLarch" xml:space="preserve">
+    <value>European Larch</value>
+  </data>
+  <data name="EuropeanPolecat" xml:space="preserve">
+    <value>European Polecat</value>
+  </data>
+  <data name="EuropeanWildcat" xml:space="preserve">
+    <value>European Wildcat</value>
+  </data>
+  <data name="FallowDeer" xml:space="preserve">
+    <value>Fallow Deer</value>
+  </data>
+  <data name="Fireflies" xml:space="preserve">
+    <value>Fireflies</value>
+  </data>
+  <data name="FireSalamander" xml:space="preserve">
+    <value>Fire Salamander</value>
+  </data>
+  <data name="FlyAgaric" xml:space="preserve">
+    <value>Fly Agaric</value>
+  </data>
+  <data name="Gentian" xml:space="preserve">
+    <value>Gentian</value>
+  </data>
+  <data name="Gnat" xml:space="preserve">
+    <value>Gnat</value>
+  </data>
+  <data name="GoldenEagle" xml:space="preserve">
+    <value>Golden Eagle</value>
+  </data>
+  <data name="Goshawk" xml:space="preserve">
+    <value>Goshawk</value>
+  </data>
+  <data name="GreaterHorseshoeBat" xml:space="preserve">
+    <value>Greater Horseshoe Bat</value>
+  </data>
+  <data name="GreaterSpottedWoodpecker" xml:space="preserve">
+    <value>Greater Spotted Woodpecker</value>
+  </data>
+  <data name="GreatGreenBushCricket" xml:space="preserve">
+    <value>Great Green Bush-Cricket</value>
+  </data>
+  <data name="Hedgehog" xml:space="preserve">
+    <value>Hedgehog</value>
+  </data>
+  <data name="HorseChestnut" xml:space="preserve">
+    <value>Horse Chestnut</value>
+  </data>
+  <data name="LargeTortoiseshell" xml:space="preserve">
+    <value>Large Tortoiseshell</value>
+  </data>
+  <data name="Linden" xml:space="preserve">
+    <value>Linden</value>
+  </data>
+  <data name="Lynx" xml:space="preserve">
+    <value>Lynx</value>
+  </data>
+  <data name="MapButterfly" xml:space="preserve">
+    <value>Map Butterfly</value>
+  </data>
+  <data name="Mole" xml:space="preserve">
+    <value>Mole</value>
+  </data>
+  <data name="Moss" xml:space="preserve">
+    <value>Moss</value>
+  </data>
+  <data name="MountainHare" xml:space="preserve">
+    <value>Mountain Hare</value>
+  </data>
+  <data name="Nightingale" xml:space="preserve">
+    <value>Nightingale</value>
+  </data>
+  <data name="ParasolMushroom" xml:space="preserve">
+    <value>Parasol Mushroom</value>
+  </data>
+  <data name="PeacockButterfly" xml:space="preserve">
+    <value>Peacock Butterfly</value>
+  </data>
+  <data name="PennyBun" xml:space="preserve">
+    <value>Penny Bun</value>
+  </data>
+  <data name="PhoebusApollo" xml:space="preserve">
+    <value>Phoebus Apollo</value>
+  </data>
+  <data name="PondTurtle" xml:space="preserve">
+    <value>Pond Turtle</value>
+  </data>
+  <data name="PurpleEmperor" xml:space="preserve">
+    <value>Purple Emperor</value>
+  </data>
+  <data name="Raccoon" xml:space="preserve">
+    <value>Raccoon</value>
+  </data>
+  <data name="RedDeer" xml:space="preserve">
+    <value>Red Deer</value>
+  </data>
+  <data name="RedFox" xml:space="preserve">
+    <value>Red Fox</value>
+  </data>
+  <data name="RedSquirrel" xml:space="preserve">
+    <value>Red Squirrel</value>
+  </data>
+  <data name="RoeDeer" xml:space="preserve">
+    <value>Roe Deer</value>
+  </data>
+  <data name="SavisPipistrelle" xml:space="preserve">
+    <value>Savi's Pipistrelle</value>
+  </data>
+  <data name="SilverFir" xml:space="preserve">
+    <value>Silver Fir</value>
+  </data>
+  <data name="SilverWashedFritillary" xml:space="preserve">
+    <value>Silver-Washed Fritillary</value>
+  </data>
+  <data name="Squeaker" xml:space="preserve">
+    <value>Squeaker</value>
+  </data>
+  <data name="StagBeetle" xml:space="preserve">
+    <value>Stag Beetle</value>
+  </data>
+  <data name="Steinbock" xml:space="preserve">
+    <value>Steinbock</value>
+  </data>
+  <data name="StingingNettle" xml:space="preserve">
+    <value>Stinging Nettle</value>
+  </data>
+  <data name="StonePine" xml:space="preserve">
+    <value>Stone Pine</value>
+  </data>
+  <data name="Sycamore" xml:space="preserve">
+    <value>Sycamore</value>
+  </data>
+  <data name="TawnyOwl" xml:space="preserve">
+    <value>Tawny Owl</value>
+  </data>
+  <data name="TreeFerns" xml:space="preserve">
+    <value>Tree Ferns</value>
+  </data>
+  <data name="TreeFrog" xml:space="preserve">
+    <value>Tree Frog</value>
+  </data>
+  <data name="VioletCarpenterBee" xml:space="preserve">
+    <value>Violet Carpenter Bee</value>
+  </data>
+  <data name="WaterVole" xml:space="preserve">
+    <value>Water Vole</value>
+  </data>
+  <data name="WildBoar" xml:space="preserve">
+    <value>Wild Boar</value>
+  </data>
+  <data name="FemaleWildBoar" xml:space="preserve">
+    <value>Wild Boar (♀) </value>
+  </data>
+  <data name="WildStrawberries" xml:space="preserve">
+    <value>WildStrawberries</value>
+  </data>
+  <data name="Wolf" xml:space="preserve">
+    <value>Wolf</value>
+  </data>
+  <data name="WoodAnt" xml:space="preserve">
+    <value>Wood Ant</value>
+  </data>
+  <data name="Sapling" xml:space="preserve">
+    <value>Sapling</value>
+  </data>
+  <data name="CommonRaven" xml:space="preserve">
+    <value>Common Raven</value>
+  </data>
+</root>
