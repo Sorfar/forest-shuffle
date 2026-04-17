@@ -1,6 +1,5 @@
 ﻿using biota;
 using biota.dwellers;
-using biota.dwellers.butterflies;
 using biota.habitats;
 
 namespace forest;

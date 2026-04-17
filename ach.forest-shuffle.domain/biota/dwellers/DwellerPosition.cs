@@ -1,4 +1,4 @@
-﻿namespace biota.dwellers.butterflies;
+﻿namespace biota.dwellers;
 
 public enum DwellerPosition
 {

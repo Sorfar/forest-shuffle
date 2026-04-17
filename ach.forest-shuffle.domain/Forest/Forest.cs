@@ -54,6 +54,7 @@ public class Forest
 
         return totalPoints;
     }
+
     internal int NumberOf(TypeIcon typeIcon)
     {
         return Biota.Count(b => b.HasType(typeIcon));

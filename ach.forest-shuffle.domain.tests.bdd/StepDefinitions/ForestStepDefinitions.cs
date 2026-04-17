@@ -1,6 +1,5 @@
 ﻿using biota;
 using biota.dwellers;
-using biota.dwellers.butterflies;
 using biota.habitats;
 using biota.habitats.shrubs;
 using biota.habitats.trees;
@@ -105,6 +104,12 @@ public class ForestStepDefinitions
         var result = constructed.Invoke(GetCurrentForest(), null) as int? ?? throw new InvalidOperationException();
 
         SetNumberResult(result);
+    }
+
+    [When(@"I get the total points of the forest")]
+    public void WhenGetTotalPoints()
+    {
+        SetNumberResult(GetCurrentForest().GetTotalPoints([]));
     }
 
     [Then(@"the number result should be {int}")]
