@@ -22,4 +22,7 @@
     <ProjectReference Include="..\ach.forest-shuffle.domain\ach.forest-shuffle.domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="Support\Resources\*.resx" />
+  </ItemGroup>
 </Project>

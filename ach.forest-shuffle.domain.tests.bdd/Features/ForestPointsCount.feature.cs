@@ -105,7 +105,7 @@ namespace Ach.Forest_Shuffle.Domain.Tests.Bdd.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/ForestPointsCount.feature.ndjson", 3);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/ForestPointsCount.feature.ndjson", 4);
         }
         
         async global::System.Threading.Tasks.Task global::Xunit.IAsyncLifetime.InitializeAsync()
@@ -182,6 +182,91 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
 #line 15
  await testRunner.ThenAsync("the number result should be 16", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [global::Xunit.SkippableFactAttribute(DisplayName="Calcul de points complexe orienté chauve souris")]
+        [global::Xunit.TraitAttribute("FeatureTitle", "ForestPointsCount")]
+        [global::Xunit.TraitAttribute("Description", "Calcul de points complexe orienté chauve souris")]
+        public async global::System.Threading.Tasks.Task CalculDePointsComplexeOrienteChauveSouris()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            string pickleIndex = "1";
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Calcul de points complexe orienté chauve souris", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            string[] tagsOfRule = ((string[])(null));
+            global::Reqnroll.RuleInfo ruleInfo = null;
+#line 17
+this.ScenarioInitialize(scenarioInfo, ruleInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                await testRunner.SkipScenarioAsync();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 18
+ await testRunner.GivenAsync("a plot with a sapin douglas tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 19
+ await testRunner.AndAsync("a tipule on the left", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 20
+ await testRunner.AndAsync("an oreillard roux on the right", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 21
+ await testRunner.AndAsync("a petit apollon on the top", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 22
+ await testRunner.AndAsync("a plot with a bouleau tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 23
+ await testRunner.AndAsync("a murin de bechstein on the left", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 24
+ await testRunner.AndAsync("a vespere de savi on the right", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 25
+ await testRunner.AndAsync("a rainette verte on the bottom", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 26
+ await testRunner.AndAsync("an effraie des clochers on the top", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 27
+ await testRunner.AndAsync("a plot with a tilleul tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 28
+ await testRunner.AndAsync("a barbastelle d\'europe on the left", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 29
+ await testRunner.AndAsync("a grand rhinolophe on the right", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 30
+ await testRunner.AndAsync("a grande tortue on the top", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 31
+ await testRunner.AndAsync("a hérisson commun on the bottom", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 32
+ await testRunner.AndAsync("a plot with a hêtre tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 33
+ await testRunner.AndAsync("a pipistrelle commune on the right", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 34
+ await testRunner.AndAsync("a pipistrelle commune on the left", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 35
+ await testRunner.AndAsync("a carte géographique on the top", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 36
+ await testRunner.WhenAsync("I get the total points of the forest", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 37
+ await testRunner.ThenAsync("the number result should be 20", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
