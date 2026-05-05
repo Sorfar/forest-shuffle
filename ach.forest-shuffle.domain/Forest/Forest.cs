@@ -42,15 +42,41 @@ public class Forest
 
     public int GetTotalPoints(IReadOnlyList<Forest> otherForests)
     {
-        var totalPoints = 0;
+        var treePoints = 0;
 
-        totalPoints += Plots.Sum(p => p.Biota.Sum(b => b.GetPointValue(this, otherForests, p)));
+        foreach (var p in Plots)
+        {
+            var points = p.Habitat.GetPointValue(this, otherForests, p);
+            treePoints += points;
+        }
 
-        totalPoints += GetButterflyPoints();
+        var topBottomPoints = 0;
 
-        totalPoints += GetFireSalamanderPoints();
+        var butterflyPoints = GetButterflyPoints();
+        topBottomPoints += butterflyPoints;
 
-        totalPoints += CaveCardCount;
+        var fireSalamanderPoints = GetFireSalamanderPoints();
+        topBottomPoints += fireSalamanderPoints;
+
+        foreach (var p in Plots)
+        {
+            var topPoints = p.TopDwellers.Sum(t => t.GetPointValue(this, otherForests, p));
+            var bottomPoints = p.BottomDwellers.Sum(t => t.GetPointValue(this, otherForests, p));
+            topBottomPoints += topPoints;
+            topBottomPoints += bottomPoints;
+        }
+
+        var leftRightPoints = 0;
+
+        foreach (var p in Plots)
+        {
+            var leftPoints = p.LeftDwellers.Sum(t => t.GetPointValue(this, otherForests, p));
+            var rightPoints = p.RightDwellers.Sum(t => t.GetPointValue(this, otherForests, p));
+            leftRightPoints += leftPoints;
+            leftRightPoints += rightPoints;
+        }
+
+        var totalPoints = treePoints + topBottomPoints + leftRightPoints;
 
         return totalPoints;
     }
@@ -87,12 +113,12 @@ public class Forest
 
     internal int NumberOfVioletCarpenterBees()
     {
-        return Plots.Where(p => p.Mainstay is Tree).Sum(p => p.Biota.Count(b => b is VioletCarpenterBee));
+        return Plots.Where(p => p.Habitat is Tree).Sum(p => p.Biota.Count(b => b is VioletCarpenterBee));
     }
 
     internal int NumberOfVioletCarpenterBees<T>() where T : Tree
     {
-        return Plots.Where(p => p.Mainstay.GetType() == typeof(T)).Sum(p => p.Biota.Count(b => b is VioletCarpenterBee));
+        return Plots.Where(p => p.Habitat.GetType() == typeof(T)).Sum(p => p.Biota.Count(b => b is VioletCarpenterBee));
     }
 
     private static List<List<T>> SplitIntoUniqueSets<T>(List<T> items) where T : LivingOrganism

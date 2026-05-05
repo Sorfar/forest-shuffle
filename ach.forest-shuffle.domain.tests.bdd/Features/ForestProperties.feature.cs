@@ -155,10 +155,10 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 6
- await testRunner.GivenAsync("a plot with an oak tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("a plot with an \'oak\' tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 7
- await testRunner.AndAsync("an eurasian jay on the top", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("an \'eurasian jay\' on the top", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 8
  await testRunner.WhenAsync("I get the number of living organism of type icon \'bird\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
@@ -192,13 +192,13 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 12
- await testRunner.GivenAsync("a plot with an oak tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("a plot with an \'oak\' tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 13
- await testRunner.AndAsync("a plot with a birch tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("a plot with a \'birch\' tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 14
- await testRunner.AndAsync("a plot with a oak tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("a plot with a \'oak\' tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 15
  await testRunner.AndAsync("a plot with a sapling as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -235,19 +235,19 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             {
                 await this.ScenarioStartAsync();
 #line 20
- await testRunner.GivenAsync("a plot with an oak tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("a plot with an \'oak\' tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 21
- await testRunner.AndAsync("a violet carpenter bee on the left", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("a \'violet carpenter bee\' on the left", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 22
- await testRunner.AndAsync("a plot with a birch tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("a plot with a \'birch\' tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 23
- await testRunner.AndAsync("a violet carpenter bee on the right", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("a \'violet carpenter bee\' on the right", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 24
- await testRunner.AndAsync("a plot with a oak tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("a plot with a \'oak\' tree as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 25
  await testRunner.AndAsync("a plot with a sapling as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -287,25 +287,25 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
  await testRunner.GivenAsync("a plot with a sapling as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 31
- await testRunner.AndAsync("blackberries on the bottom", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("\'blackberries\' on the bottom", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 32
  await testRunner.AndAsync("a plot with a sapling as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 33
- await testRunner.AndAsync("blackberries on the bottom", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("\'blackberries\' on the bottom", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 34
  await testRunner.AndAsync("a plot with a sapling as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 35
- await testRunner.AndAsync("moss on the bottom", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("\'moss\' on the bottom", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 36
  await testRunner.AndAsync("a plot with a sapling as habitat", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 37
- await testRunner.AndAsync("wild strawberries on the bottom", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("\'wild strawberries\' on the bottom", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 38
  await testRunner.WhenAsync("I get the distinct number of living organism of type icon \'plant\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");

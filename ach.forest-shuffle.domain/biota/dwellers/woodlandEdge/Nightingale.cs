@@ -9,6 +9,6 @@ public class Nightingale(TreeIcon treeIcon) : Dweller(treeIcon)
 
     public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
-        return plot.Mainstay is Shrub ? 5 : 0;
+        return plot.Habitat is Shrub ? 5 : 0;
     }
 }

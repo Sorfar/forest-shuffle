@@ -1,12 +1,6 @@
-﻿using Ach.Forest_Shuffle.Domain.Tests.Bdd.StepDefinitions;
-using Ach.Forest_Shuffle.Domain.Tests.Bdd.Support.Resources;
+﻿using Ach.Forest_Shuffle.Domain.Tests.Bdd.Support.Resources;
 using forest;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using System.Collections;
-using System.Globalization;
-using System.Resources;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Ach.Forest_Shuffle.Domain.Tests.Bdd.Support.Transformations
 {
@@ -16,7 +10,8 @@ namespace Ach.Forest_Shuffle.Domain.Tests.Bdd.Support.Transformations
         [StepArgumentTransformation]
         public static Type TransformToType(string typeName)
         {
-            var assembly = typeof(Forest).Assembly;
+            typeName = typeName.Trim();
+
             var type = GetTypeFromName(typeName) ?? GetTypeFromName(GetResxNameByValue(typeName));
 
             return type ?? throw new Exception($"Type {typeName} introuvable");
@@ -48,7 +43,7 @@ namespace Ach.Forest_Shuffle.Domain.Tests.Bdd.Support.Transformations
 
         private static string GetResxNameByValue(string value)
         {
-            return LivingOrganismsNameHelper.LivingOrganismsFrToTypeDictionnary.FirstOrDefault(e => e.Key.ToLowerInvariant() == value.ToLowerInvariant()).Value ?? throw new InvalidCastException($"Nom d'espèce non trouvé : {value}.");
+            return LivingOrganismsNameHelper.LivingOrganismsFrToTypeDictionnary.FirstOrDefault(e => e.Key.Equals(value, StringComparison.CurrentCultureIgnoreCase)).Value ?? throw new InvalidCastException($"Nom d'espèce non trouvé : {value}.");
         }
     }
 }

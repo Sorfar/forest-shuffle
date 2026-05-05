@@ -52,7 +52,7 @@ internal static class LivingOrganismsNameHelper
         {"Aigle royal", "GoldenEagle"},
         {"Autour des palombes", "Goshawk"},
         {"Grand rhinolophe", "GreaterHorseshoeBat"},
-        {"Pic épeiche", "GreaterSpottedWoodpecker"},
+        {"Pic épeiche", "GreatSpottedWoodpecker"},
         {"Grande sauterelle verte", "GreatGreenBushCricket"},
         {"Hérisson commun", "Hedgehog"},
         {"Marronnier commun", "HorseChestnut"},
@@ -95,5 +95,6 @@ internal static class LivingOrganismsNameHelper
         {"Loup", "Wolf"},
         {"Fourmi rousse", "WoodAnt"},
         {"Pousse d'arbre", "Sapling"},
-        {"Grand corbeau", "CommonRaven"},   };
+        {"Grand corbeau", "CommonRaven"},   
+    };
 }

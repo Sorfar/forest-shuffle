@@ -8,10 +8,10 @@ public class Plot
 {
     public Plot(Habitat mainstay)
     {
-        Mainstay = mainstay;
+        Habitat = mainstay;
     }
 
-    public Habitat Mainstay { get; private set; } = default!;
+    public Habitat Habitat { get; private set; } = default!;
 
     public List<Dweller> TopDwellers { get; } = [];
 
@@ -21,11 +21,15 @@ public class Plot
 
     public List<Dweller> RightDwellers { get; } = [];
 
-    public IReadOnlyList<LivingOrganism> Biota => [Mainstay, .. TopDwellers, .. BottomDwellers, .. LeftDwellers, .. RightDwellers];
+    public IReadOnlyList<LivingOrganism> Biota => [Habitat, .. TopDwellers, .. BottomDwellers, .. LeftDwellers, .. RightDwellers];
 
     public IReadOnlyList<LivingOrganism> Dwellers => [.. TopDwellers, .. BottomDwellers, .. LeftDwellers, .. RightDwellers];
 
-    public bool FullyOccupied => Biota.All(b => b != null);
+    public bool FullyOccupied => 
+        TopDwellers.Count != 0 
+        && BottomDwellers.Count != 0 
+        && LeftDwellers.Count != 0 
+        && RightDwellers.Count != 0;
 
     public void AddDweller(Dweller dweller, DwellerPosition position)
     {

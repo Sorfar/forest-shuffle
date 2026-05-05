@@ -9,6 +9,6 @@ public class Chaffinch(TreeIcon treeIcon) : Dweller(treeIcon)
 
     public override int GetPointValue(Forest forest, IReadOnlyList<Forest> otherForests, Plot plot)
     {
-        return plot.Mainstay is Beech ? 5 : 0;
+        return plot.Habitat is Beech ? 5 : 0;
     }
 }

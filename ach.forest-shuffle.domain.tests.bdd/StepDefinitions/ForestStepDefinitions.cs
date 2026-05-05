@@ -17,11 +17,16 @@ public class ForestStepDefinitions
     public ForestStepDefinitions(ScenarioContext scenarioContext)
     {
         _scenarioContext = scenarioContext;
+    }
+
+    [BeforeScenario]
+    public void SetupForests()
+    {
         _scenarioContext["currentForest"] = new Forest();
         _scenarioContext["otherForest"] = new Forest();
     }
 
-    [Given(@"a plot with (a )(an ){} tree as habitat")]
+    [Given(@"a plot with (a )(an )'{}' tree as habitat")]
     public void GivenAPlotWithTreeAsHabitat(Type treeType)
     {
         var tree = CreateInstanceOfTree(treeType);
@@ -37,7 +42,7 @@ public class ForestStepDefinitions
         SetCurrentPlot(plot);
     }
 
-    [Given(@"a plot with (a )(an ){} shrub as habitat")]
+    [Given(@"a plot with (a )(an )'{}' shrub as habitat")]
     public void GivenAPlotWithShrubAsHabitat(Type shrubType)
     {
         var shrub = CreateInstanceOfShrub(shrubType);
@@ -45,7 +50,7 @@ public class ForestStepDefinitions
         SetCurrentPlot(plot);
     }
 
-    [Given(@"(a )(an ){} on the {DwellerPosition}")]
+    [Given(@"(a )(an )'{}' on the {DwellerPosition}")]
     public void GivenADwellerOnPosition(Type dwellerType, DwellerPosition position)
     {
         var plot = GetCurrentPlot() ?? throw new InvalidOperationException("No plot.");
@@ -53,7 +58,7 @@ public class ForestStepDefinitions
         GetCurrentForest().AddDweller(plot, dweller, position);
     }
 
-    [Given(@"(a )(an ){} of tree type {TreeIcon} on the {DwellerPosition}")]
+    [Given(@"(a )(an )'{}' of type {TreeIcon} on the {DwellerPosition}")]
     public void GivenADwellerOnPosition(Type dwellerType, TreeIcon treeIcon, DwellerPosition position)
     {
         var plot = GetCurrentPlot() ?? throw new InvalidOperationException("No plot.");
